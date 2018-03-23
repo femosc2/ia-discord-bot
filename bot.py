@@ -12,7 +12,7 @@ datavetenskapdate = datetime.datetime(2018,4,7)
 databasdate = datetime.datetime(2018,5,17)
 systemvetenskapdate = datetime.datetime(2018,6,12)
 
-iaquotes = ["Vad är nav? - Victor Håkansson", "Jag fattade inte frågan så jag kryssade i båda rutorna - Victor Persson"]
+iaquotes = ["Vad är nav? - Victor Håkansson", "Jag fattade inte frågan så jag kryssade i båda rutorna - Victor Persson", "Säg inte till mig vad jag ska göra - Stoff", "Så kan det gå när man skriver tentan dagen innan - Magnus"]
 
 
 @client.event
@@ -46,12 +46,17 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
 
     elif message.content.startswith('!iahelp'):
-        msg =   "!nexttenta\n!contribute\n!creator".format(message)
+        msg =   "!nexttenta\n!contribute\n!creator\n!quotes\n!schema".format(message)
         await client.send_message(message.channel, msg)
         
     elif message.content.startswith('!quotes'):
         msg =   random.choice(iaquotes).format(message)
         await client.send_message(message.channel, msg)
+        
+    elif message.content.startswith('!schema'):
+        msg =   "http://schema.mah.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&sokMedAND=true&forklaringar=true&resurser=p.TGIAA17h".format(message)
+        await client.send_message(message.channel, msg)
+
 
 
 @client.event
