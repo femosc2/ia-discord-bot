@@ -1,9 +1,13 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import discord
 import time
 import datetime
 import random
+import api_keys
 
-TOKEN = 'NDI2Njc4NDk3Njg4NDIwMzUy.DZZgBQ.Uqf0Xkk15C_MhzAcQ7QO-tMcdE8'
+TOKEN = api_keys.token()
 
 client = discord.Client()
 current_time = datetime.datetime.now()
@@ -14,7 +18,6 @@ systemvetenskapdate = datetime.datetime(2018,6,12)
 
 iaquotes = ["Vad är nav? - Victor Håkansson", "Jag fattade inte frågan så jag kryssade i båda rutorna - Victor Persson", "Säg inte till mig vad jag ska göra - Stoff", "Så kan det gå när man skriver tentan dagen innan - <:mange:419853258153000960>"]
 
-bad_words = ["fan", "helvete", "fuck", "scheisse", "merde", "le fui", "fuq", "cyka"]
 @client.event
 async def on_message(message):
     """when user sends a message with the parameter the bot will respond with the message defined in msg"""
@@ -56,11 +59,6 @@ async def on_message(message):
 
     elif message.content.startswith('!emotes'):
         msg =   " <:tsanti:380391764323729409> <:2pac:380393936482467841> <:simonsbrod:380423036807151616> <:ia:380424464183328779> <:dipak:380430114250555392>: <:kappa:380447123214172162> <:stefan:380449729248755723> <:andhisname:380452684454690816> <:gachiGASM:382651346651840512> <:monkaS:383410496994279435> <:tskral:416316577471004672> <:ogtskral:416317001695232000> <:bae:416317932428197899> <:surreal:418365846294102019> <:POGGERS:419436969689612289> <:notification:419440773168234497> <:horsehead:419853153710768138> <:mange:419853258153000960> <:iablack:424178053279776768>" .format(message)
-        await client.send_message(message.channel, msg)
-
-        #todo, make it notice if any part of the message contains the param words, make it so i dont have to write another function for each word.
-    elif message.content.startswith(bad_words[0]):
-        msg = "{0.author.mention}, vårda ditt språk! Detta är en kristen discord server!".format(message)
         await client.send_message(message.channel, msg)
 
 
