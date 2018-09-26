@@ -35,7 +35,8 @@ async def on_message(message):
             msg = "IAHT17s nästa tenta är 12 Juni 2018 i Systemutveckling (Omtentamen 1)".format(message)
             await client.send_message(message.channel, msg)
         else:
-            print("Finns inga fler tentor inplanerade!")
+            msg = "Finns inga fler tentor inplanerade!".format(message)
+            await client.send_message(message.channel, msg)
 
     elif message.content.startswith('!contribute'):
         msg = "Vill du hjälpa till med vår Discord bot? www.github.com/femosc2/ia-discord-bot".format(message)
